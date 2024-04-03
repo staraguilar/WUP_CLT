@@ -113,3 +113,25 @@ print(paste('mean = ', mean(my1000$k9),' sd = ',sd(my1000$k9)))
 
 The previous graph show that the mean is getting closer and closer to 50 and standard deviation is decreasing which is in accordance with a CLT theory. The standard deviation was as expected, because the sample standard deviation was 41.83 and when divided by square root 9 (the sample size) it equals approximately 13.93, which is close to the results with its approximately 14. 
 
+```{r}
+numb=16
+Hdata = Homers_data[sample(1:1000, size=numb*1000, replace=T),"kkardashtemp"]
+mdata  <-matrix(Hdata,nrow=1000,ncol=numb)
+x.avg <- apply(mdata,1,mean)
+my1000$k16 = x.avg
+
+p <- ggplot(my1000, aes(x=k16)) + 
+  geom_density() 
+
+
+# Add mean line
+  geom_vline(aes(xintercept=mean(k16)),
+            color="blue", linetype="dashed", size=1)
+p + ggtitle ("n = 16")+
+  xlab("temperature") + ylab("density")
+
+print(paste('mean = ', mean(my1000$k16),' sd = ',sd(my1000$k16)))
+
+```
+
+
