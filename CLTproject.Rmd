@@ -157,4 +157,4 @@ print(paste('mean = ', mean(my1000$k25),' sd = ',sd(my1000$k25)))
 
 ```
 
-
+The graph is looking more symmetrical, because now we are using 25 samples at a time which gives for more chances for opinion discrepancies. And the standard deviation is decreasing as expected because we are dividing by a larger number. In this case its the square root of 25.
