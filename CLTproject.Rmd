@@ -158,3 +158,26 @@ print(paste('mean = ', mean(my1000$k25),' sd = ',sd(my1000$k25)))
 ```
 
 The graph is looking more symmetrical, because now we are using 25 samples at a time which gives for more chances for opinion discrepancies. And the standard deviation is decreasing as expected because we are dividing by a larger number. In this case its the square root of 25.
+
+```{r}
+numb=36
+Hdata = Homers_data[sample(1:1000, size=numb*1000, replace=T),"kkardashtemp"]
+mdata  <-matrix(Hdata,nrow=1000,ncol=numb)
+x.avg <- apply(mdata,1,mean)
+my1000$k36 = x.avg
+
+p <- ggplot(my1000, aes(x=k36)) + 
+  geom_density() 
+
+
+# Add mean line
+  geom_vline(aes(xintercept=mean(k25)),
+            color="blue", linetype="dashed", size=1)
+p + ggtitle ("n = 36")+
+  xlab("temperature") + ylab("density")
+
+print(paste('mean = ', mean(my1000$k36),' sd = ',sd(my1000$k36)))
+
+```
+
+
